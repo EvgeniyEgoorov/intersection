@@ -34,4 +34,4 @@ class Rectangle:
 if __name__ == '__main__':
     n = int(input())
     rectangles = [Rectangle(*list(map(int, input().split()))) for _ in range(n)]
-    print(Rectangle.handler(rectangles))
+    print(*Rectangle.handler(rectangles))

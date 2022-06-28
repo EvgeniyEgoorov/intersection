@@ -19,8 +19,19 @@ class Rectangle:
             rect1.y_min < rect2.y_max < rect1.y_max,
         ])
 
+    @classmethod
+    def handler(cls, arr: list) -> list:
+        """The function handles an array of rectangles coordinates"""
+        ls = [0 for i in range(len(arr))]
+        for i in range(len(arr)):
+            for j in range(i + 1, len(arr)):
+                if cls.has_intersection(arr[i], arr[j]):
+                    ls[i] += 1
+                    ls[j] += 1
+        return ls
+
 
 if __name__ == '__main__':
-    first_rect = Rectangle(1, 1, 5, 5)
-    second_rect = Rectangle(4, 4, 9, 9)
-    print(Rectangle.has_intersection(first_rect, second_rect))
+    n = int(input())
+    rectangles = [Rectangle(*list(map(int, input().split()))) for _ in range(n)]
+    print(Rectangle.handler(rectangles))

@@ -4,6 +4,7 @@ from dataclasses import dataclass
 @dataclass
 class Rectangle:
     """For each rectangle, we set the lower left and upper right vertices (x, y)"""
+
     x_min: int
     y_min: int
     x_max: int
@@ -12,12 +13,14 @@ class Rectangle:
     @staticmethod
     def has_intersection(rect1, rect2):
         """The logic is based on Separating Axis Theorem"""
-        return any([
-            rect1.x_min < rect2.x_min < rect1.x_max,
-            rect1.x_min < rect2.x_max < rect1.x_max,
-            rect1.y_min < rect2.y_min < rect1.y_max,
-            rect1.y_min < rect2.y_max < rect1.y_max,
-        ])
+        return any(
+            [
+                rect1.x_min < rect2.x_min < rect1.x_max,
+                rect1.x_min < rect2.x_max < rect1.x_max,
+                rect1.y_min < rect2.y_min < rect1.y_max,
+                rect1.y_min < rect2.y_max < rect1.y_max,
+            ]
+        )
 
     @classmethod
     def handler(cls, arr: list) -> list:
@@ -31,7 +34,7 @@ class Rectangle:
         return ls
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     n = int(input())
     rectangles = [Rectangle(*list(map(int, input().split()))) for _ in range(n)]
     print(*Rectangle.handler(rectangles))

@@ -14,9 +14,14 @@ class TestRectangle(unittest.TestCase):
         First scenario returns AssertionError if rectangles have no intersection (!= True)
         Second scenario returns AssertionError if rectangles have intersection (!= False)
         """
-        self.assertTrue(Rectangle.has_intersection(self.rect1, self.rect2), "No intersection")
-        self.assertFalse(Rectangle.has_intersection(self.rect3, self.rect4), "There is an intersection")
+        self.assertTrue(
+            Rectangle.has_intersection(self.rect1, self.rect2), "No intersection"
+        )
+        self.assertFalse(
+            Rectangle.has_intersection(self.rect3, self.rect4),
+            "There is an intersection",
+        )
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
